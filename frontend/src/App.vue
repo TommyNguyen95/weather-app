@@ -1,5 +1,17 @@
 <template>
   <div id="app">
-    <router-view />
+    <Navbar />
+    <main class="container mt-2">
+      <router-view />
+    </main>
   </div>
 </template>
+
+<script>
+import Navbar from './components/Navbar.vue'
+export default {
+  components: {
+    Navbar
+  }
+}
+</script>
