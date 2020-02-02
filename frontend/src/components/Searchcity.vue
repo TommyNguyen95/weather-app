@@ -7,29 +7,35 @@
           id="city-search"
           placeholder="Type in the location..."
           v-model="location"
+          @keyup.enter="updateLocation"
         />
         <button @click="updateLocation">Search</button>
-        {{location}}
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import API from "../lib/API.js";
+// import API from "../lib/API.js";
 export default {
   name: "Searchcity",
   data() {
     return {
-      location: '',
+      location: ""
     };
+  },
+  created() {
+    this.$store.dispatch("fetch", "Stockholm");
   },
   methods: {
     updateLocation() {
-      API.getCordinates(this.location)
-      .then(res => {
-        console.log(res)
-      })
+      console.log("updateLocation");
+      this.$store.dispatch("fetch", this.location);
+    }
+  },
+  computed: {
+    latlong() {
+      return this.$store.getters["getLocation"];
     }
   }
 };
