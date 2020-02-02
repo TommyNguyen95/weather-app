@@ -34,7 +34,6 @@ export default new Vuex.Store({
   actions: {
     fetch({ dispatch }, city) {
       dispatch('fetchLocation', city).then((res) => {
-        console.log("fetchLocation SUCCESS: ", res)
         dispatch('fetchCity', res);
         dispatch('loadWeather', res)
       });
@@ -42,21 +41,19 @@ export default new Vuex.Store({
     fetchLocation({ commit }, city) {
       return API.getCordinates(city)
         .then(res => {
-          console.log(res)
           commit('SET_LOCATION', res);
           return res;
         })
     },
     fetchCity({ commit }, { latitude, longitude }) {
       API.getAddress(latitude, longitude).then((res) => {
-        console.log('getAdress: ', res.name);
         commit('SET_CITY', res.name);
       });
     },
     loadWeather({ commit }, { latitude, longitude }) {
-      API.getWeather(latitude, longitude).then(result => {
-        commit('SET_WEATHER', result)
-        console.log(result)
+      API.getWeather(latitude, longitude).then(res => {
+        commit('SET_WEATHER', res)
+        console.log('Här kommer apiet', res)
       });
     },
   }
