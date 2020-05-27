@@ -2,7 +2,7 @@
   <div class="weather">
     <div class="row">
       <SearchCity />
-      <div class="col-6 offset-3">
+      <div class="col-8">
         <div class="card border-primary mb-3">
           <div class="card-header">{{location.city}}</div>
           <div class="card-body" v-if="!!weather">
@@ -30,6 +30,9 @@
             </div>
           </div>
         </div>
+        <router-link v-if="location.city" :to="{ name: 'citypic', params: { city: location.city }}">
+          <button>Klicka här för att se bilder från {{ location.city }}</button>
+        </router-link>
       </div>
     </div>
   </div>
@@ -81,6 +84,16 @@ export default {
 .card-text {
   font-weight: bold;
   font-size: 1rem;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+}
+
+.weather {
+  display: flex;
+  justify-content: center;
 }
 
 .weather-icon {

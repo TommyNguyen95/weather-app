@@ -8,6 +8,7 @@ export default new Vuex.Store({
   state: {
     currentLocation: {},
     currentWeather: {},
+    currentImage: {},
   },
   getters: {
     getLocation(state) {
@@ -15,6 +16,9 @@ export default new Vuex.Store({
     },
     getWeather(state) {
       return state.currentWeather;
+    },
+    getCityPic(state) {
+      return state.currentImage;
     }
   },
   mutations: {
@@ -29,12 +33,15 @@ export default new Vuex.Store({
         ...state.currentLocation,
         city
       }
+    },
+    SET_IMAGE(state, image) {
+      state.currentImage = image
     }
   },
   actions: {
     fetch({ dispatch }, city) {
       dispatch('fetchLocation', city).then((res) => {
-        dispatch('fetchCity', res);
+        dispatch('fetchCity', res)
         dispatch('loadWeather', res)
       });
     },
@@ -56,5 +63,11 @@ export default new Vuex.Store({
         console.log('Här kommer apiet', res)
       });
     },
+    fetchCityImage({ commit }, city) {
+      API.getCityImage(city).then(res => {
+        commit('SET_IMAGE', res)
+        console.log('wappa', res)
+      })
+    }
   }
 })

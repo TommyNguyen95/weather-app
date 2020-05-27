@@ -1,5 +1,5 @@
 <template>
-  <div class="col-6 offset-3 mb-3">
+  <div class="col-8 mb-3">
     <div class="input-group">
       <input
         type="text"
