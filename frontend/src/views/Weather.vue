@@ -31,7 +31,7 @@
           </div>
         </div>
         <router-link v-if="location.city" :to="{ name: 'citypic', params: { city: location.city }}">
-          <button>Klicka här för att se bilder från {{ location.city }}</button>
+          <button class="btn btn-outline-secondary" style="width: 100%;">Klicka här för att se bilder från {{ location.city }}</button>
         </router-link>
       </div>
     </div>
