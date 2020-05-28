@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-      <a class="fake-button" href="/">GÅ TILLBAKA</a>
+      <a class="btn btn-outline-secondary" href="/">GÅ TILLBAKA</a>
       <div class="row">
         <div v-for="(images, tag) in image.photos" :key="tag" class="col-12">
           <img class="city-picture" v-bind:src="images.src.landscape" alt="" />

@@ -60,13 +60,11 @@ export default new Vuex.Store({
     loadWeather({ commit }, { latitude, longitude }) {
       API.getWeather(latitude, longitude).then(res => {
         commit('SET_WEATHER', res)
-        console.log('Här kommer apiet', res)
       });
     },
     fetchCityImage({ commit }, city) {
       API.getCityImage(city).then(res => {
         commit('SET_IMAGE', res)
-        console.log('wappa', res)
       })
     }
   }
